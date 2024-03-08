@@ -38,27 +38,31 @@
                     <div class="col-lg-6 mx-auto">
                         <div class="login-form">
                             <h4 class="text-center">Iniciar Sesión</h4>
-                            <div class="row">
-                                <div class="col-md-6 mx-auto">
-                                    <label>Correo Electrónico</label>
-                                    <input class="form-control" type="text" placeholder="usuario@correo.com">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mx-auto">
-                                    <label>Contraseña</label>
-                                    <input class="form-control" type="text" placeholder="Contraseña">
-                                </div>
-                                <!-- <div class="col-md-12">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="newaccount">
-                                         <label class="custom-control-label" for="newaccount">Keep me signed in</label> 
+                            <form id="userLogin" method="post">
+                                <div class="row">
+                                    <div class="col-md-6 mx-auto">
+                                        <label>Correo Electrónico</label>
+                                        <input class="form-control" type="text" name="correo" id="correo" placeholder="usuario@correo.com">
+                                        <span class="invalid-feedback" id="correo-error">Ingresa un correo electrónico válido.</span>
                                     </div>
-                                </div> -->
-                                <div class="col-md-12 text-center">
-                                    <button class="btn">Iniciar Sesión</button>
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-6 mx-auto">
+                                        <label>Contraseña</label>
+                                        <input class="form-control" type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
+                                        <span class="invalid-feedback" id="contraseña-error">Ingresa la contraseña.</span>
+                                    </div>
+                                    <!-- <div class="col-md-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="newaccount">
+                                            <label class="custom-control-label" for="newaccount">Keep me signed in</label> 
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-12 text-center">
+                                        <button class="btn">Iniciar Sesión</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -66,5 +70,25 @@
         </div>
         <!-- Login End -->
         <?php include 'layout\footer.php'; ?>
+        <script src="js/userLoginValidation.js"></script>
+        <!-- Modal Error User-->
+        <div class="modal fade" id="sesionFallidoModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error al iniciar Sesión</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Usuario o Contraseña inválidos.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
