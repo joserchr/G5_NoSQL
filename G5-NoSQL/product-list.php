@@ -19,7 +19,14 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <?php include 'layout\navbar.php'; ?>
+    <?php
+    include 'layout\navbar.php';
+    require 'connectDB.php';
+    // Conectar a la base de datos
+    $db = connectDB();
+    // Consultar los productos
+    $productos = $db->Productos->find();
+    ?>
         <!-- Breadcrumb Start -->
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
@@ -84,11 +91,11 @@
                                             </div> 
                                         </div> 
                                     </div> -->
-                                    
+                                    <?php foreach ($productos as $producto): ?>
                                     <div class="col-md-4">
                                         <div class="product-item">
                                             <div class="product-title">
-                                                <a href="#">Vestido Negro</a>
+                                                <a href="#"><?php echo htmlspecialchars($producto->Nombre); ?></a>
                                                 <!-- <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -99,7 +106,7 @@
                                             </div>
                                             <div class="product-image">
                                                 <a href="product-detail.html">
-                                                    <img src="img/product-1.jpg" alt="Product Image">
+                                                    <img src="<?php echo htmlspecialchars($producto->Imagen); ?>" alt="Product Image">
                                                 </a>
                                                 <div class="product-action">
                                                     <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -108,22 +115,23 @@
                                                 </div>
                                             </div>
                                             <div class="product-price">
-                                                <h3><span>$</span>99</h3>
+                                                <h3><span>$</span><?php echo htmlspecialchars($producto->Precio); ?></h3>
                                                 <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar Ahora</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <?php endforeach; ?>
+                                    <!-- <div class="col-md-4">
                                         <div class="product-item">
                                             <div class="product-title">
                                                 <a href="#">Enterizo Azul</a>
-                                                <!-- <div class="ratting">
+                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div> -->
+                                                </div> 
                                             </div>
                                             <div class="product-image">
                                                 <a href="product-detail.html">
@@ -145,13 +153,13 @@
                                         <div class="product-item">
                                             <div class="product-title">
                                                 <a href="#">Vestido Largo Azul</a>
-                                                <!-- <div class="ratting">
+                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div> -->
+                                                </div> 
                                             </div>
                                             <div class="product-image">
                                                 <a href="product-detail.html">
@@ -173,13 +181,13 @@
                                         <div class="product-item">
                                             <div class="product-title">
                                                 <a href="#">Blusa Café Manga Larga</a>
-                                                <!-- <div class="ratting">
+                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div> -->
+                                                </div> 
                                             </div>
                                             <div class="product-image">
                                                 <a href="product-detail.html">
@@ -201,13 +209,13 @@
                                         <div class="product-item">
                                             <div class="product-title">
                                                 <a href="#">Camisa Niño Celeste</a>
-                                                <!-- <div class="ratting">
+                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div> -->
+                                                </div> 
                                             </div>
                                             <div class="product-image">
                                                 <a href="product-detail.html">
@@ -229,13 +237,13 @@
                                         <div class="product-item">
                                             <div class="product-title">
                                                 <a href="#">Skinny Jeans</a>
-                                                <!-- <div class="ratting">
+                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div> -->
+                                                </div> 
                                             </div>
                                             <div class="product-image">
                                                 <a href="product-detail.html">
@@ -257,13 +265,13 @@
                                         <div class="product-item">
                                             <div class="product-title">
                                                 <a href="#">Abrigo Negro</a>
-                                                <!-- <div class="ratting">
+                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div> -->
+                                                </div> 
                                             </div>
                                             <div class="product-image">
                                                 <a href="product-detail.html">
@@ -285,13 +293,13 @@
                                         <div class="product-item">
                                             <div class="product-title">
                                                 <a href="#">Blusa Manga Larga Negra</a>
-                                                <!-- <div class="ratting">
+                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div> -->
+                                                </div> 
                                             </div>
                                             <div class="product-image">
                                                 <a href="product-detail.html">
@@ -313,13 +321,13 @@
                                         <div class="product-item">
                                             <div class="product-title">
                                                 <a href="#">Abrigo Beige</a>
-                                                <!-- <div class="ratting">
+                                                 <div class="ratting">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div> -->
+                                                </div> 
                                             </div>
                                             <div class="product-image">
                                                 <a href="product-detail.html">
@@ -339,7 +347,7 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Pagination Start -->
+                                Pagination Start 
                                 <div class="col-md-12">
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination justify-content-center">
@@ -355,7 +363,7 @@
                                         </ul>
                                     </nav>
                                 </div>
-                                <!-- Pagination Start -->
+                                 Pagination Start -->
                             </div>           
                             
                             <!-- Side Bar Start 

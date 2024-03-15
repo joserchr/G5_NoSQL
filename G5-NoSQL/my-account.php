@@ -31,21 +31,94 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-tachometer-alt"></i>Dashboard</a>
+                            <!-- <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-tachometer-alt"></i>Dashboard</a> -->
+                            <a class="nav-link active" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Detalles de mi Cuenta</a>
                             <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Orders</a>
                             <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Payment Method</a>
                             <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>address</a>
-                            <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
-                            <a class="nav-link" href="index.html"><i class="fa fa-sign-out-alt"></i>Logout</a>
+                            <a class="nav-link" href="logout.php"><i class="fa fa-sign-out-alt"></i>Cerrar Sesión</a>
                         </div>
                     </div>
                     <div class="col-md-9">
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
+                            <!-- <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
                                 <h4>Dashboard</h4>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus. Nulla tristique viverra nisl, sit amet bibendum ante suscipit non. Praesent in faucibus tellus, sed gravida lacus. Vivamus eu diam eros. Aliquam et sapien eget arcu rhoncus scelerisque.
                                 </p> 
+                            </div> -->
+                            <?php
+                            require 'getUser.php'; // Asegúrate de incluir el archivo que contiene la función getUserData
+
+                            // Verificar si el usuario ha iniciado sesión y obtener su ID
+                            if (isset($_SESSION['id'])) {
+                                $userId = $_SESSION['id'];
+                                // Obtener los datos del usuario
+                                $userData = getUserData($userId);
+
+                                // Verificar si se obtuvieron los datos del usuario correctamente
+                                if ($userData) {
+                                    // Mostrar los datos del usuario en los campos del formulario
+                                    $nombre = $userData['Nombre'];
+                                    $apellidos = $userData['Apellidos'];
+                                    $telefono = $userData['Telefono'];
+                                    $email = $userData['Correo'];
+                                    $direccion = $userData['DireccionEnvio'];
+                                }
+                            }
+                            ?>
+                            <div class="tab-pane fade show active" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
+                                <form id="editUser" method="post">
+                                    <h4>Detalles de mi Cuenta</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="text" name="nombre" id="nombre" value="<?php echo $nombre; ?>">
+                                            <span class="invalid-feedback" id="nombre-error">Ingresa un nombre válido.</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="text" name="apellidos" id="apellidos" value="<?php echo $apellidos; ?>">
+                                            <span class="invalid-feedback" id="apellidos-error">Ingresa apellidos válidos.</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="text" name="telefono" id="telefono" value="<?php echo $telefono; ?>">
+                                            <span class="invalid-feedback" id="telefono-error">Ingresa un teléfono válido.</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="text" name="correo" id="correo" value="<?php echo $email; ?>">
+                                            <span class="invalid-feedback" id="correo-error">Ingresa un correo electrónico válidos.</span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input class="form-control" type="text" name="direccion" id="direccion" value="<?php echo $direccion; ?>">
+                                            <span class="invalid-feedback" id="direccion-error">Ingresa una dirección válida.</span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="btn">Actualizar Datos</button>
+                                            <br><br>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form id="editUserPassword" method="post">
+                                    <h4>Cambio de Contraseña</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="password" name="contraseña" id="contraseña" placeholder="Contraseña Actual">
+                                            <span class="invalid-feedback" id="contraseña-error">Ingresa tu contraseña actual.</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="password" name="nuevaContraseña" id="nuevaContraseña" placeholder="Nueva Contraseña">
+                                            <span class="invalid-feedback" id="nuevaContraseña-error">Ingresa una contraseña con mínimo una maýuscula, un número y un caracter especial.</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="password" name="confirmarContraseña" id="confirmarContraseña" placeholder="Confirmar Contraseña">
+                                            <span class="invalid-feedback" id="confirmarContraseña-error">La nueva contraseña no coincide o no cumple con el formato solicitado.</span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="btn">Cambiar Contraseña</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
                                 <div class="table-responsive">
@@ -112,45 +185,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
-                                <h4>Account Details</h4>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="First Name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="Last Name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="Mobile">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="Email">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-control" type="text" placeholder="Address">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button class="btn">Update Account</button>
-                                        <br><br>
-                                    </div>
-                                </div>
-                                <h4>Password change</h4>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <input class="form-control" type="password" placeholder="Current Password">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="New Password">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" placeholder="Confirm Password">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button class="btn">Save Changes</button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -158,5 +192,82 @@
         </div>
         <!-- My Account End -->
         <?php include 'layout\footer.php'; ?>
+        <script src="js/editUserFormValidation.js"></script>
+        <!-- Modal User updated-->
+        <div class="modal fade" id="actualizacionExitosoModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Usuario Actualizado Exitosamente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <p>¡Usuario actualizado correctamente!</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Error Update User-->
+        <div class="modal fade" id="actualizacionFallidoModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error al actualizar el usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ha ocurrido un error al actualizar el usuario</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal password updated-->
+        <div class="modal fade" id="actualizacionContraseñaExitosaModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Contraseña Actualizada Exitosamente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <p>¡La Contraseña se actualizó correctamente!</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Error User-->
+        <div class="modal fade" id="actualizacionContraseñaFallidaModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error al actualizar la contraseña</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ha ocurrido un error al actualizar la contraseña</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
