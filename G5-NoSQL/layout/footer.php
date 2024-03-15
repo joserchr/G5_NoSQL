@@ -27,7 +27,7 @@
                     <div class="footer-widget">
                         <h2>Contacto</h2>
                         <div class="contact-info">
-                            <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
+                            <p><i class="fa fa-map-marker"></i>123 E Store, San José, CR</p>
                             <p><i class="fa fa-envelope"></i>tienda@ufidelitas.ac.cr</p>
                             <p><i class="fa fa-phone"></i>+506-2222-2222</p>
                         </div>

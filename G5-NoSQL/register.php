@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Teléfono</label>
-                                        <input class="form-control" type="tel" name="telefono" id="telefono" laceholder="8888-8888">
+                                        <input class="form-control" type="tel" name="telefono" id="telefono" placeholder="8888-8888">
                                         <span class="invalid-feedback" id="telefono-error">Ingresa un teléfono válido.</span>
                                     </div>
                                     <div class="col-md-12">

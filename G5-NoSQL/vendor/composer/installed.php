@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'jean85/pretty-package-versions' => array(
-            'pretty_version' => '2.0.5',
-            'version' => '2.0.5.0',
-            'reference' => 'ae547e455a3d8babd07b96966b17d7fd21d9c6af',
+            'pretty_version' => '2.0.6',
+            'version' => '2.0.6.0',
+            'reference' => 'f9fdd29ad8e6d024f52678b570e5593759b550b4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../jean85/pretty-package-versions',
             'aliases' => array(),

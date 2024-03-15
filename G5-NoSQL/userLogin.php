@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['Nombre'] = $user->Nombre; 
         $_SESSION['Apellidos'] = $user->Apellidos; 
         $_SESSION['Correo'] = $user->Correo; 
+        $_SESSION['Rol'] = $user->Rol; 
 
         /* Redirigir al usuario a la página de inicio o al panel de control
         header('Location: index.php'); */
