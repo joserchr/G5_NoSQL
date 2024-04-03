@@ -25,14 +25,14 @@
         // Conectar a la base de datos
         $db = connectDB();
         // Consultar los productos
-        $marcas = $db->Marcas->find();
+        $categorias = $db->Categorias->find();
         ?>
         <!-- Breadcrumb Start -->
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-                    <li class="breadcrumb-item active"> Marcas</li>
+                    <li class="breadcrumb-item active"> Categorias</li>
                 </ul>
             </div>
         </div>
@@ -41,10 +41,10 @@
         <div class="recent-product product">
             <div class="container-fluid">
                 <div class="section-header d-flex justify-content-between align-items-center">
-                    <h1>Marcas Registradas</h1>
+                    <h1>Categorias Registradas</h1>
                     <!-- Botón para agregar una nueva prenda -->
-                    <a href="addMarca.php" type="button" class="btn">
-                        <i class="fa fa-plus"></i> Agregar Marca
+                    <a href="addCategoria.php" type="button" class="btn">
+                        <i class="fa fa-plus"></i> Agregar Categoria
                     </a>
                 </div>
             </div>
@@ -58,17 +58,19 @@
                                     <table class="table table-bordered">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th>Marca</th>
+                                                <th>Categoria</th>
+                                                <th>Descripción</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody class="align-middle">
-                                            <?php foreach ($marcas as $marca): ?>
+                                            <?php foreach ($categorias as $categoria): ?>
                                             <tr>
-                                                <td><?php echo htmlspecialchars($marca->Marca); ?></td>
+                                                <td><?php echo htmlspecialchars($categoria->Categoria); ?></td>
+                                                <td><?php echo htmlspecialchars($categoria->Descripcion); ?></td>
                                                 <td>
-                                                    <a class="btn" href="editMarca.php?id=<?php echo htmlspecialchars($marca->_id); ?>"><i class="fa fa-edit"></i></a>
                                                     <button><i class="fa fa-trash"></i></button>
+                                                    <a class="btn" href="editCategoria.php?id=<?php echo htmlspecialchars($categoria->_id); ?>"><i class="fa fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                             <!-- <tr>
