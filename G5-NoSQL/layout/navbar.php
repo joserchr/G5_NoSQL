@@ -17,11 +17,10 @@
     <link href="lib/slick/slick-theme.css" rel="stylesheet">
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <?php
-    session_start();
-    ?>
+    <?php session_start();?>
     <!-- Nav Bar Start -->
 <div class="nav">
     <div class="container-fluid">
@@ -37,7 +36,7 @@
                     <!-- <a href="product-detail.html" class="nav-item nav-link">Hombre</a> -->
                     <!-- <a href="product-detail.html" class="nav-item nav-link">Mujer</a> -->
                     <a href="contact.php" class="nav-item nav-link">Contáctanos</a>
-                    <a href="cart.html" class="nav-item nav-link"><i class="fa fa-shopping-cart"></i></a>
+                    <!-- <a href="cart.html" class="nav-item nav-link"><i class="fa fa-shopping-cart"></i></a> -->
                 </div> 
                 <div class="navbar-nav ml-auto">
                     <?php if(isset($_SESSION['Rol']) && $_SESSION['Rol'] === 'Cliente'): ?>
@@ -55,6 +54,9 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Gestión de Tienda</a>
                             <div class="dropdown-menu">
                                 <a href="stock.php" class="dropdown-item">Inventario</a>
+                                <a href="marca.php" class="dropdown-item">Marcas</a>
+                                <a href="categoria.php" class="dropdown-item">Categorias</a>
+                                <a href="orders.php" class="dropdown-item">Órdenes</a>
                                 <a href="logout.php" class="dropdown-item">Cerrar Sesión</a>
                             </div>
                         </div>
@@ -93,11 +95,11 @@
                 </div>
                 <div class="col-md-3">
                     <div class="user">
-                        <a href="wishlist.html" class="btn wishlist">
+                        <a href="wishlist.php" class="btn wishlist">
                             <i class="fa fa-heart"></i>
                             <span>(0)</span>
                         </a>
-                        <a href="cart.html" class="btn cart">
+                        <a href="cart.php" class="btn cart">
                             <i class="fa fa-shopping-cart"></i>
                             <span>(0)</span>
                         </a>
@@ -109,3 +111,40 @@
     <!-- Bottom Bar End -->
 </body>
 </html>
+<script>
+    $(document).ready(function() {
+        // Función para actualizar la cantidad de elementos en la lista de favoritos
+        function updateWishlistCount() {
+            $.ajax({
+                url: "wishlistCount.php",
+                type: "GET",
+                dataType: "json",
+                success: function(response) {
+                    // Actualiza el texto con la cantidad de elementos en la lista de favoritos
+                    $('.wishlist span').text('(' + response.cantidadItems + ')');
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+        // Función para actualizar la cantidad de elementos en el carrito
+        function updateCartCount() {
+            $.ajax({
+                url: "cartlistCount.php",
+                type: "GET",
+                dataType: "json",
+                success: function(response) {
+                    // Actualiza el texto con la cantidad de elementos en la lista de favoritos
+                    $('.cart span').text('(' + response.cantidadItems + ')');
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+        // Llamar a las funciones de actualización al cargar la página
+        updateWishlistCount();
+        updateCartCount();
+    });
+</script>

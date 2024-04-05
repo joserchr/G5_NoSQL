@@ -56,7 +56,7 @@
                                         <span class="invalid-feedback" id="nombre-error">Ingrese la descripcion.</span>
                                     </div>      
                                     <div class="col-md-12 text-center mt-4">
-                                        <a class="btn mr-5" href="marca.php">Cancelar</a>
+                                        <a class="btn mr-5" href="categoria.php">Cancelar</a>
                                         <button class="btn" type="submit">Registrar Categoria</button>
                                     </div>
                                 </div>

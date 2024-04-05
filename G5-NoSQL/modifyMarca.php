@@ -1,6 +1,5 @@
 <?php
 require 'connectDB.php';
-
 // Verificar si la solicitud es mediante el método POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recuperar datos del formulario

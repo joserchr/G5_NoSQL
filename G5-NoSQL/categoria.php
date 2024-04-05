@@ -69,8 +69,8 @@
                                                 <td><?php echo htmlspecialchars($categoria->Categoria); ?></td>
                                                 <td><?php echo htmlspecialchars($categoria->Descripcion); ?></td>
                                                 <td>
-                                                    <button><i class="fa fa-trash"></i></button>
                                                     <a class="btn" href="editCategoria.php?id=<?php echo htmlspecialchars($categoria->_id); ?>"><i class="fa fa-edit"></i></a>
+                                                    <button class="btn-delete-categoria" data-id="<?php echo htmlspecialchars($categoria->_id); ?>"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
                                             <!-- <tr>
@@ -157,5 +157,45 @@
             <!-- Wishlist End -->
         </div>
         <?php include 'layout\footer.php'; ?>
+        <script src="js/deleteMarca.js"></script>
+        <!-- Modal User created-->
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Eliminar Categoria</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <p>¿Está seguro(a) que desea eliminar la categoria registrada?</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" id="confirmDeleteButton">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Error User-->
+        <div class="modal fade" id="deletePrendaFallida" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error al eliminar la categoria</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ha ocurrido un error al eliminar la categoria, inténtelo de nuevo más tarde.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

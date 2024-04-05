@@ -131,11 +131,11 @@ $(document).ready(function() {
 
         if (newPassword !== confirmPassword || confirmPassword.trim() === "") {
             $("#confirmarContraseña").addClass("is-invalid");
-            $("#confirmarContraseña").show();
+            $("#confirmarContraseña-error").show();
             return false;
         } else {
             $("#confirmarContraseña").removeClass("is-invalid");
-            $("#confirmarContraseña").hide();
+            $("#confirmarContraseña-error").hide();
             return true;
         }
     }

@@ -72,12 +72,12 @@
                                             <tr>
                                                 <td>
                                                     <div class="img">
-                                                        <a href="#"><img src="<?php echo htmlspecialchars($producto->Imagen); ?>" alt="Image"></a>
+                                                        <a href="product-detail.php?id=<?php echo htmlspecialchars($producto->_id); ?>"><img src="<?php echo htmlspecialchars($producto->Imagen); ?>" alt="Image"></a>
                                                         <p><?php echo htmlspecialchars($producto->Nombre); ?></p>
                                                     </div>
                                                 </td>
                                                 <td><?php echo htmlspecialchars($producto->Descripcion); ?></td>
-                                                <td><?php echo htmlspecialchars($producto->Precio); ?></td>
+                                                <td>₡<?php echo htmlspecialchars($producto->Precio); ?></td>
                                                 <td>
                                                     <!-- <div class="qty">
                                                         <button class="btn-minus"><i class="fa fa-minus"></i></button>
@@ -89,9 +89,9 @@
                                                 <td><?php echo htmlspecialchars($producto->Talla); ?></td>
                                                 <td><?php echo htmlspecialchars($producto->Color); ?></td>
                                                 <td>
-                                                    <button><i class="fa fa-eye"></i></button>
-                                                    <button><i class="fa fa-trash"></i></button>
-                                                    <button><i class="fa fa-edit"></i></button>
+                                                    <!-- <a class="btn" href="product-detail.php?id=<?php echo htmlspecialchars($producto->_id); ?>"><i class="fa fa-eye"></i></a> -->
+                                                    <a class="btn" href="editItem.php?id=<?php echo htmlspecialchars($producto->_id); ?>"><i class="fa fa-edit"></i></a>
+                                                    <button class="btn" data-id="<?php echo htmlspecialchars($producto->_id); ?>"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
                                             <!-- <tr>
@@ -178,5 +178,64 @@
             <!-- Wishlist End -->
         </div>
         <?php include 'layout\footer.php'; ?>
+        <script src="js/deleteItem.js"></script>
+        <!-- Modal User created-->
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Eliminar Prenda</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <p>¿Está seguro(a) que desea eliminar la prenda?</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" id="confirmDeleteButton">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Error User-->
+        <div class="modal fade" id="deletePrendaFallida" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error al eliminar la prenda</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ha ocurrido un error al eliminar la prenda</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Error User-->
+        <div class="modal fade" id="deletePrendaFallida" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Prenda Agregada a Mis Favoritos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>¡La Prenda se agregó a "Mi Lista de Deseos" exitosamente!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

@@ -29,7 +29,7 @@
             <div class="container-fluid">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-                    <li class="breadcrumb-item"><a href="stock.php">Marcas</a></li>
+                    <li class="breadcrumb-item"><a href="marca.php">Marcas</a></li>
                     <!-- <li class="breadcrumb-item"><a href="#">Products</a></li> -->
                     <li class="breadcrumb-item active">Registro de Marcas</li>
                 </ul>

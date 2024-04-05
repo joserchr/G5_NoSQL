@@ -109,14 +109,14 @@
                                                     <img src="<?php echo htmlspecialchars($producto->Imagen); ?>" alt="Product Image">
                                                 </a>
                                                 <div class="product-action">
-                                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                                    <a href="#"><i class="fa fa-search"></i></a>
+                                                    <a href="#" class="btn cart-product" data-id="<?php echo htmlspecialchars($producto->_id); ?>"><i class="fa fa-cart-plus"></i></a>
+                                                    <a href="#" class="btn favorite-product" data-id="<?php echo htmlspecialchars($producto->_id); ?>"><i class="fa fa-heart"></i></a>
+                                                    <!-- <a href="product-detail.php?id=<?php echo htmlspecialchars($producto->_id); ?>"><i class="fa fa-search"></i></a> -->
                                                 </div>
                                             </div>
                                             <div class="product-price">
-                                                <h3><span>$</span><?php echo htmlspecialchars($producto->Precio); ?></h3>
-                                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar Ahora</a>
+                                                <h3><span>₡</span><?php echo htmlspecialchars($producto->Precio); ?></h3>
+                                                <a class="btn" href="product-detail.php?id=<?php echo htmlspecialchars($producto->_id); ?>"><i class="fa fa-shopping-cart"></i>Comprar Ahora</a>
                                             </div>
                                         </div>
                                     </div>
@@ -365,7 +365,6 @@
                                 </div>
                                  Pagination Start -->
                             </div>           
-                            
                             <!-- Side Bar Start 
                             <div class="col-lg-4 sidebar">
                                 <div class="sidebar-widget category">
@@ -509,7 +508,6 @@
             </div>
         </div>
         <!-- Recent Product End -->
-        
         <!-- Brand Start -->
         <div class="brand">
             <div class="container-fluid">
@@ -525,5 +523,81 @@
         </div>
         <!-- Brand End -->
         <?php include 'layout\footer.php'; ?>
+        <script src="js/product.js"></script>
+        <!-- Modal Error User-->
+        <div class="modal fade" id="favoritosModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Prenda añadida a Favoritos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>¡Prenda añadida a tu lista de Favoritos con éxito!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Prenda añadida al Carrito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>¡Prenda añadida al Carrito con éxito!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Error User-->
+        <div class="modal fade" id="addItemFailedModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error al añadir Prenda</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ha ocurrido un error al añadir la prenda, inténtalo de nuevo más tarde.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Error User-->
+        <div class="modal fade" id="favoritosSessionModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Iniciar Sesión</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Por favor inicia sesión para añadir prendas a tu lista de Favoritos</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

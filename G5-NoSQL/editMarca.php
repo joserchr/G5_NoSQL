@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-                    <li class="breadcrumb-item"><a href="stock.php">Marcas</a></li>
+                    <li class="breadcrumb-item"><a href="marca.php">Marcas</a></li>
                     <!-- <li class="breadcrumb-item"><a href="#">Products</a></li> -->
                     <li class="breadcrumb-item active">Editar Marca Existente</li>
                 </ul>
@@ -68,7 +68,7 @@
                                         <span class="invalid-feedback" id="nombre-error">Ingresa un nombre válido para la marca.</span>
                                     </div>
                                     <div class="col-md-12 text-center mt-4">
-                                        <a class="btn mr-5" href="stock.php">Cancelar</a>
+                                        <a class="btn mr-5" href="marca.php">Cancelar</a>
                                         <button class="btn" type="submit">Modificar Marca</button>
                                     </div>
                                 </div>

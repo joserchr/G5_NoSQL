@@ -1,18 +1,15 @@
 <?php
 require 'connectDB.php';
-function getUserData($userId) {
+function getProductData($productId) {
     // Conectar a la base de datos
     $db = connectDB();
-
     // Buscar el usuario en la base de datos por su ID
-    $user = $db->Usuarios->findOne(['_id' => ($userId)]);
-
+    $product = $db->Productos->findOne(['_id' => new MongoDB\BSON\ObjectId($productId)]);
     // Verificar si el usuario existe
-    if ($user) {
-        return $user;
+    if ($product) {
+        return $product;
     } else {
         return null;
     }
 }
 ?>
-

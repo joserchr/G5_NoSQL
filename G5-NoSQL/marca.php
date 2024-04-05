@@ -68,7 +68,7 @@
                                                 <td><?php echo htmlspecialchars($marca->Marca); ?></td>
                                                 <td>
                                                     <a class="btn" href="editMarca.php?id=<?php echo htmlspecialchars($marca->_id); ?>"><i class="fa fa-edit"></i></a>
-                                                    <button><i class="fa fa-trash"></i></button>
+                                                    <button class="btn-delete-marca" data-id="<?php echo htmlspecialchars($marca->_id); ?>"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
                                             <!-- <tr>
@@ -155,5 +155,45 @@
             <!-- Wishlist End -->
         </div>
         <?php include 'layout\footer.php'; ?>
+        <script src="js/deleteMarca.js"></script>
+        <!-- Modal User created-->
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Eliminar Marca</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <p>¿Está seguro(a) que desea eliminar la marca registrada?</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" id="confirmDeleteButton">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Error User-->
+        <div class="modal fade" id="deleteMarcaFallida" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error al eliminar la marca</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ha ocurrido un error al eliminar la marca, inténtelo de nuevo más tarde.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
